@@ -1190,24 +1190,48 @@ There are no default tabs on non-Page models so there will be no\
         Publisher.settings_panels = [FieldPanel("name")]
         Publisher.promote_panels = [FieldPanel("headquartered_in")]
 
-        warning_1 = checks.Warning(
-            "Publisher.promote_panels will have no effect on modeladmin editing",
-            hint="""Ensure that Publisher uses `panels` instead of `promote_panels`\
+        warning_1 = (
+            checks.Warning(
+                "Publisher.promote_panels will have no effect on modeladmin editing",
+                hint="""Ensure that Publisher uses `panels` instead of `promote_panels`\
+ or set up an `edit_handler` if you want a tabbed editing interface.
+There are no default tabs on non-Page models so there will be no\
+ Promote tab for the promote_panels to render in.""",
+                obj=Publisher,
+                id="wagtailadmin.W002",
+            )
+            if WAGTAIL_VERSION >= (6, 4)
+            else checks.Warning(
+                "Publisher.promote_panels will have no effect on modeladmin editing",
+                hint="""Ensure that Publisher uses `panels` instead of `promote_panels`\
 or set up an `edit_handler` if you want a tabbed editing interface.
 There are no default tabs on non-Page models so there will be no\
  Promote tab for the promote_panels to render in.""",
-            obj=Publisher,
-            id="wagtailadmin.W002",
+                obj=Publisher,
+                id="wagtailadmin.W002",
+            )
         )
 
-        warning_2 = checks.Warning(
-            "Publisher.settings_panels will have no effect on modeladmin editing",
-            hint="""Ensure that Publisher uses `panels` instead of `settings_panels`\
+        warning_2 = (
+            checks.Warning(
+                "Publisher.settings_panels will have no effect on modeladmin editing",
+                hint="""Ensure that Publisher uses `panels` instead of `settings_panels`\
+ or set up an `edit_handler` if you want a tabbed editing interface.
+There are no default tabs on non-Page models so there will be no\
+ Settings tab for the settings_panels to render in.""",
+                obj=Publisher,
+                id="wagtailadmin.W002",
+            )
+            if WAGTAIL_VERSION >= (6, 4)
+            else checks.Warning(
+                "Publisher.settings_panels will have no effect on modeladmin editing",
+                hint="""Ensure that Publisher uses `panels` instead of `settings_panels`\
 or set up an `edit_handler` if you want a tabbed editing interface.
 There are no default tabs on non-Page models so there will be no\
  Settings tab for the settings_panels to render in.""",
-            obj=Publisher,
-            id="wagtailadmin.W002",
+                obj=Publisher,
+                id="wagtailadmin.W002",
+            )
         )
 
         checks_results = self.get_checks_result()
