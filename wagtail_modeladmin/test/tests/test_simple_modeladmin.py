@@ -10,6 +10,7 @@ from django.test import TestCase, TransactionTestCase
 from django.test.utils import override_settings
 from django.utils.timezone import make_aware
 from openpyxl import load_workbook
+from wagtail import VERSION as WAGTAIL_VERSION
 from wagtail.admin.admin_url_finder import AdminURLFinder
 from wagtail.admin.panels import (
     FieldPanel,
@@ -1156,14 +1157,26 @@ class TestPanelConfigurationChecks(WagtailTestUtils, TestCase):
     def test_model_with_single_tabbed_panel_only(self):
         Publisher.content_panels = [FieldPanel("name"), FieldPanel("headquartered_in")]
 
-        warning = checks.Warning(
-            "Publisher.content_panels will have no effect on modeladmin editing",
-            hint="""Ensure that Publisher uses `panels` instead of `content_panels`\
+        warning = (
+            checks.Warning(
+                "Publisher.content_panels will have no effect on modeladmin editing",
+                hint="""Ensure that Publisher uses `panels` instead of `content_panels`\
+ or set up an `edit_handler` if you want a tabbed editing interface.
+There are no default tabs on non-Page models so there will be no\
+ Content tab for the content_panels to render in.""",
+                obj=Publisher,
+                id="wagtailadmin.W002",
+            )
+            if WAGTAIL_VERSION >= (6, 4)
+            else checks.Warning(
+                "Publisher.content_panels will have no effect on modeladmin editing",
+                hint="""Ensure that Publisher uses `panels` instead of `content_panels`\
 or set up an `edit_handler` if you want a tabbed editing interface.
 There are no default tabs on non-Page models so there will be no\
  Content tab for the content_panels to render in.""",
-            obj=Publisher,
-            id="wagtailadmin.W002",
+                obj=Publisher,
+                id="wagtailadmin.W002",
+            )
         )
 
         checks_results = self.get_checks_result()
