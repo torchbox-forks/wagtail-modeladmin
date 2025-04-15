@@ -20,7 +20,7 @@ This package is in maintenance mode and will not receive new features. Consider 
 
 - Python 3.8 (Wagtail 5.2 only), 3.9, 3.10, 3.11, 3.12, 3.13
 - Django 4.2, 5.0, 5.1, 5.2
-- Wagtail 5.2, 6.1, 6.2, 6.3
+- Wagtail 5.2, 6.1, 6.2, 6.3 and 6.4
 
 ## Installation
 
