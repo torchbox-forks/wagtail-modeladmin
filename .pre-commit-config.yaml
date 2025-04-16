@@ -6,7 +6,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -19,26 +19,26 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/psf/black
-    rev: 24.4.2
+    rev: 25.1.0
     hooks:
       - id: black
         language_version: python3
         args: ['--target-version', 'py38']
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     # Ruff version.
-    rev: 'v0.0.265'
+    rev: 'v0.11.5'
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
   - repo: https://github.com/pre-commit/mirrors-prettier
     # prettier config is in prettier.config.js
-    rev: 'v2.7.1'
+    rev: 'v4.0.0-alpha.8'
     hooks:
       - id: prettier
         types_or: [css, scss, javascript, json, yaml]
   - repo: https://github.com/pre-commit/mirrors-eslint
     # eslint config is in .eslintrc.js
-    rev: v8.40.0
+    rev: v9.24.0
     hooks:
       - id: eslint
         additional_dependencies:
@@ -55,7 +55,7 @@ repos:
         types: [file]
   - repo: https://github.com/thibaudcolas/pre-commit-stylelint
     # stylelint config is in .stylelintrc.js
-    rev: v15.6.1
+    rev: v16.18.0
     hooks:
       - id: stylelint
         files: \.(scss)$
@@ -63,7 +63,7 @@ repos:
           - 'stylelint@15.6.1'
           - '@wagtail/stylelint-config-wagtail@0.6.0'
   - repo: https://github.com/adamchainz/blacken-docs
-    rev: 1.16.0
+    rev: 1.19.1
     hooks:
       - id: blacken-docs
-        additional_dependencies: [black==24.4.2]
+        additional_dependencies: [black==25.1.0]
