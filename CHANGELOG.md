@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Wagtail 6.3 and 6.4 support
 - Django 5.2 support
+- Fix `RemovedInWagtail70Warning` deprecation warning about `classnames` kwarg usage when initializing `MenuItem`
 
 ## [2.1.0] - 2024-10-23
 
