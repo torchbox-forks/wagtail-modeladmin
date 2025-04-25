@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Provisional support for Wagtail 7.0
 - Django 5.2 support
 - Fix `RemovedInWagtail70Warning` deprecation warning about `classnames` kwarg usage when initializing `MenuItem`
+- Docs: add [`docs/migrating.md](docs/migrating.md) for detailed instructions on how to migrate your modeladmin code to Wagtail's built-in features
+- Maintenance: fix nightly testing against upcoming Wagtail versions
 
 ## [2.1.0] - 2024-10-23
 
