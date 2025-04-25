@@ -5,11 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.2.0] - [UNRELEASED]
+## [2.2.0] - 2025-04-25
 
 - Wagtail 6.3 and 6.4 support
+- Provisional support for Wagtail 7.0
 - Django 5.2 support
 - Fix `RemovedInWagtail70Warning` deprecation warning about `classnames` kwarg usage when initializing `MenuItem`
+- Docs: add [`docs/migrating.md](docs/migrating.md) for detailed instructions on how to migrate your modeladmin code to Wagtail's built-in features
+- Maintenance: fix nightly testing against upcoming Wagtail versions
 
 ## [2.1.0] - 2024-10-23
 
